@@ -19,7 +19,7 @@ namespace ac_insertdocs_inbase.Infraestructure.Services
             _resolver = resolver;
             _atlasContext = atlasContext;
         }
-        public async Task<InsertBaseResult> InsertedInfo(List<Docs> docsList)
+        public async Task<InsertBaseResult> InsertedInfo(IEnumerable<Docs> docsList)
         {
             try
             {

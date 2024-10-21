@@ -13,30 +13,23 @@ namespace ac_insertdocs_inbase.Domain.Services
             _logger = logger;
         }
 
-        public OperationResult GetDocs(string pathFolder)
+        public GetDocsResult GetDocs(string pathFolder)
         {
             try
             {
                 string searchPattern = DomainConstants.PATTERN_TMD;
-                string[] docs = Directory.GetFiles(pathFolder, searchPattern);
-                if (docs.Length < 1)
+                List<FileInfo> docs  = Directory.GetFiles(pathFolder, searchPattern).Select(x => new FileInfo(x)).ToList();
+                return new GetDocsResult
                 {
-                    return new OperationResult
-                    {
-                        Success = false,
-                        Message = "No se logro obtener los archivos en la ruta especificada"
-                    };
-                }
-                return new OperationResult
-                {
-                    Success = true,
-                    Message = ""
+                    Files = docs,
+                    Success = docs.Any(),
+                    Message = docs.Any() ? "" : "No se logro obtener los archivos en la ruta especificada"
                 };
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error en funcion GetDocs");
-                return new OperationResult
+                return new GetDocsResult
                 {
                     Success = false,
                     Message = ex.Message
@@ -44,40 +37,30 @@ namespace ac_insertdocs_inbase.Domain.Services
             }
         }
 
-        public OperationResult ReadDocs(string[] docs)
+        public ReadDocsResult ReadDocs(IEnumerable<FileInfo> files)
         {
             try
             {
                 List<Docs> docsList = new List<Docs>();
-                foreach (string doc in docs)
+                foreach (FileInfo doc in files)
                 {
-                    string fileName = Path.GetFileName(doc);
-                    string contentDoc = File.ReadAllText(doc);
-
                     docsList.Add(new Docs
                     {
-                        NameFile = fileName,
-                        ContentFile = contentDoc
+                        NameFile = doc.Name,
+                        ContentFile = File.ReadAllText(doc.FullName)
                     });
                 }
-                if (!docsList.Any())
+                return new ReadDocsResult
                 {
-                    return new OperationResult
-                    {
-                        Success = false,
-                        Message = "No se logro leer los archivos almacenados"
-                    };
-                }
-                return new OperationResult
-                {
-                    Success = true,
-                    Message = ""
+                    Docs = docsList,
+                    Success = docsList.Any(),
+                    Message = docsList.Any() ? "" : "No se logro leer los archivos almacenados"
                 };
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error en funcion ReadDocs");
-                return new OperationResult
+                return new ReadDocsResult
                 {
                     Success = false,
                     Message = ex.Message

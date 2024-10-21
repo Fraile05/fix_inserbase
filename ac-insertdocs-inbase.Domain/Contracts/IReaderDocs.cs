@@ -4,7 +4,7 @@ namespace ac_insertdocs_inbase.Domain.Contracts
 {
     public interface IReaderDocs
     {
-        OperationResult GetDocs(string pathFolder);
-        OperationResult ReadDocs(string[] docs);
+        GetDocsResult GetDocs(string pathFolder);
+        ReadDocsResult ReadDocs(IEnumerable<FileInfo> files);
     }
 }

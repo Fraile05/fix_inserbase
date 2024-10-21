@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ac-insertdocs-inbase.Domain", "ac-insertdocs-inbase.Domain\ac-insertdocs-inbase.Domain.csproj", "{B7679416-B952-4F2A-A641-3669C52185CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ac-insertdocs-inbase.Domain", "ac-insertdocs-inbase.Domain\ac-insertdocs-inbase.Domain.csproj", "{B7679416-B952-4F2A-A641-3669C52185CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ac-insertdocs-inbase.Infraestructure", "ac-insertdocs-inbase.Infraestructure\ac-insertdocs-inbase.Infraestructure.csproj", "{A4EC67AE-DB89-439A-8344-A6999F6845A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ac-insertdocs-inbase.Infraestructure", "ac-insertdocs-inbase.Infraestructure\ac-insertdocs-inbase.Infraestructure.csproj", "{A4EC67AE-DB89-439A-8344-A6999F6845A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ac-insertdocs-inbase.UnitTests", "ac-insertdocs-inbase.UnitTests\ac-insertdocs-inbase.UnitTests.csproj", "{F600D548-2E38-457B-B7E8-9AA5C3C971D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A4EC67AE-DB89-439A-8344-A6999F6845A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4EC67AE-DB89-439A-8344-A6999F6845A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4EC67AE-DB89-439A-8344-A6999F6845A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F600D548-2E38-457B-B7E8-9AA5C3C971D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F600D548-2E38-457B-B7E8-9AA5C3C971D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F600D548-2E38-457B-B7E8-9AA5C3C971D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F600D548-2E38-457B-B7E8-9AA5C3C971D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
