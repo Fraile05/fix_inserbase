@@ -11,9 +11,9 @@ namespace ac_insertdocs_inbase.Infraestructure.Services
     {
         private readonly ILogger<BaseInserted> _logger;
         private readonly IServiceScopeFactory _resolver;
-        private readonly AtlasContext _atlasContext;
+        private readonly AtlasdbContext _atlasContext;
 
-        public BaseInserted(ILogger<BaseInserted> logger, IServiceScopeFactory resolver, AtlasContext atlasContext)
+        public BaseInserted(ILogger<BaseInserted> logger, IServiceScopeFactory resolver, AtlasdbContext atlasContext)
         {
             _logger = logger;
             _resolver = resolver;

@@ -8,16 +8,16 @@ using Xunit.Abstractions;
 
 namespace ac_insertdocs_inbase.UnitTests
 {
-    public class ReaderDocsTests
+    public class ReaderRepositoryTests
     {
         private readonly ITestOutputHelper _output;
 
-        public ReaderDocsTests(ITestOutputHelper output)
+        public ReaderRepositoryTests(ITestOutputHelper output)
         {
             _output = output;
         }
 
-        private static void BuildRequiredObjects(out IReaderDocs reader)
+        private static void BuildRequiredObjects(out IReaderRepository reader)
         {
             var builder = new ConfigurationBuilder();
             UtToolkit.BuildConfig(builder);
@@ -26,18 +26,17 @@ namespace ac_insertdocs_inbase.UnitTests
             var host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
-                    services.AddSingleton<ConfigurationValues>();
-                    services.AddTransient<IReaderDocs, ReaderDocs>();
+                    services.AddTransient<IReaderRepository, ReaderRepository>();
                 })
                 .Build();
 
-            reader = ActivatorUtilities.CreateInstance<ReaderDocs>(host.Services);
+            reader = ActivatorUtilities.CreateInstance<ReaderRepository>(host.Services);
         }
 
         [Fact]
         public void ShouldGetDocs()
         {
-            BuildRequiredObjects(out IReaderDocs reader);
+            BuildRequiredObjects(out IReaderRepository reader);
 
             string pathFolder = @"C:\Users\jose.fraile\Documents\appperson\pruebadocs";
 
@@ -56,7 +55,7 @@ namespace ac_insertdocs_inbase.UnitTests
         [Fact]
         public void ShouldReadDocs()
         {
-            BuildRequiredObjects(out IReaderDocs reader);
+            BuildRequiredObjects(out IReaderRepository reader);
 
             string pathFolder = @"C:\Users\jose.fraile\Documents\appperson\pruebadocs";
 

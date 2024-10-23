@@ -4,11 +4,11 @@ using Microsoft.Extensions.Logging;
 
 namespace ac_insertdocs_inbase.Domain.Services
 {
-    public class ReaderDocs : IReaderDocs
+    public class ReaderRepository : IReaderRepository
     {
-        private readonly ILogger<ReaderDocs> _logger;
+        private readonly ILogger<ReaderRepository> _logger;
 
-        public ReaderDocs(ILogger<ReaderDocs> logger)
+        public ReaderRepository(ILogger<ReaderRepository> logger)
         {
             _logger = logger;
         }
