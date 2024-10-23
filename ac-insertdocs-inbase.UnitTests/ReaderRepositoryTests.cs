@@ -1,6 +1,7 @@
 ﻿using ac_insertdocs_inbase.Domain.Contracts;
 using ac_insertdocs_inbase.Domain.Helpers;
 using ac_insertdocs_inbase.Domain.Services;
+using ac_insertdocs_inbase.Infraestructure.Entities.Atlas;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -74,6 +75,26 @@ namespace ac_insertdocs_inbase.UnitTests
                 _output.WriteLine("Contenido:");
                 _output.WriteLine("-------------------------------------------");
                 _output.WriteLine($"{item.ContentFile}");
+            };
+        }
+
+        [Fact]
+        public void ShouldGetFolders()
+        {
+            BuildRequiredObjects(out IReaderRepository reader);
+
+            string pathFolder = @"C:\Users\jose.fraile\Documents\appperson\pruebadocs";
+
+            var data = reader.GetFolders(pathFolder);
+
+            Assert.True(data.Success);
+
+            _output.WriteLine("Contenido de la lista de carpetas obtenidas");
+            _output.WriteLine("-------------------------------------------");
+            foreach (var item in data.Folder)
+            {
+                _output.WriteLine($"Nombre: {item.FolderName}");
+                _output.WriteLine($"Nombre: {item.FolderPath}");
             };
         }
     }

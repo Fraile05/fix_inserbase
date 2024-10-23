@@ -2,6 +2,6 @@
 {
     public class InsertBaseResult : OperationResult
     {
-        public int? IdSeccion { get; set; } 
+        public int? IdTipoNegocio { get; set; } 
     }
 }

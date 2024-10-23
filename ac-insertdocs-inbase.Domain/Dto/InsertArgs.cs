@@ -2,7 +2,7 @@
 {
     public class InsertArgs
     {
-        public int Id_Args {get; set;}
+        public int IdArgs {get; set;}
         public string TipoNegocio {get; set;} = string.Empty;
         public string Docnamevalide { get; set; } = string.Empty;
         public string Docnamefields { get; set; } = string.Empty;

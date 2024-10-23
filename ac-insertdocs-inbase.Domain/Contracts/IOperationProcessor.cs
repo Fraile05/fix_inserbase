@@ -5,6 +5,6 @@ namespace ac_insertdocs_inbase.Domain.Contracts
     public interface IOperationProcessor
     {
         OperationResult BuildFolders(string pathNamesFolder);
-        InsertArgs BuildArgs(string pathFolder);
+        OperationResult ProcessorFiles(string pathFolder);
     }
 }

@@ -36,7 +36,6 @@ namespace ac_insertdocs_inbase.Domain.Services
                 };
             }
         }
-
         public ReadDocsResult ReadDocs(IEnumerable<FileInfo> files)
         {
             try
@@ -61,6 +60,37 @@ namespace ac_insertdocs_inbase.Domain.Services
             {
                 _logger.LogError(ex, "Error en funcion ReadDocs");
                 return new ReadDocsResult
+                {
+                    Success = false,
+                    Message = ex.Message
+                };
+            }
+        }
+        public GetFolderResult GetFolders(string pathFolders)
+        {
+            try
+            {
+                List<Folder> folders = new List<Folder>();
+                string[] getFolders = Directory.GetDirectories(pathFolders);
+                foreach (string folder in getFolders)
+                {
+                    folders.Add(new Folder
+                    {
+                        FolderName = Path.GetFileName(folder),
+                        FolderPath = folder
+                    });
+                }
+                return new GetFolderResult
+                {
+                    Folder = folders,
+                    Success = folders.Any(),
+                    Message = folders.Any() ? "" : "No se obtuvieron nombres de carpeta de la ruta indicada"
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error en funcion GetFolders");
+                return new GetFolderResult
                 {
                     Success = false,
                     Message = ex.Message

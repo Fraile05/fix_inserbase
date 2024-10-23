@@ -4,6 +4,6 @@ namespace ac_insertdocs_inbase.Domain.Contracts
 {
     public interface IBaseInserted
     {
-        Task<InsertBaseResult> InsertedInfo(IEnumerable<Docs> Docs);
+        Task<InsertBaseResult> InsertedInfo(IEnumerable<InsertArgs> args);
     }
 }
